@@ -1,0 +1,117 @@
+body{
+    background-image: url("../images/login_bg.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+#login_frame {
+    width: 400px;
+    height: 260px;
+    padding: 13px;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -200px;
+    margin-top: -200px;
+
+    background-color: rgba(240, 255, 255, 0.5);
+
+    border-radius: 10px;
+    text-align: center;
+}
+
+form p > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#inputs input{
+    background-color: rgb(33,33,33,0.1);
+    -moz-border-radius: 5px;
+    width: 370px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    /*color: #9f9f9f;*/
+    color:black;
+    font-size: 20px;
+}
+#inputs input:focus{
+    border-color: rgba(99,223,66,0.3);
+}
+
+#image_logo {
+    margin-top: 22px;
+    /*margin-bottom: 10px;
+    max-height:145px;
+    max-width: 120px;
+    vertical-align:middle;*/
+}
+
+.label_input {
+    font-size: 14px;
+    font-family: 宋体;
+
+    width: 65px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+
+    color: white;
+    background-color: #3CD8FF;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.text_field {
+    width: 278px;
+    height: 28px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 0;
+}
+
+/*#btn_login {
+    font-size: 14px;
+    font-family: 宋体;
+    cursor: pointer;
+    width: 120px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+
+    color: white;
+    background-color: #3BD9FF;
+    border-radius: 6px;
+    border: 0;
+    float: left;
+}*/
+#btn_login{
+    display:inline-block;
+    cursor:pointer;
+    text-align:center;
+    font-weight:400;
+    white-space:nowrap;
+    float:left;
+
+}
+
+
+#forget_pwd {
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    float: right;
+    top: 5px;
+
+}
+
+#forget_pwd:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+#login_control {
+    padding: 0 28px;
+}
