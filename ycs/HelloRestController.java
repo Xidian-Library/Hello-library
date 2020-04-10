@@ -22,6 +22,7 @@ import org.springframework.ui.ModelMap;
 import javax.annotation.Resource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.*;
 
 
 @RestController
@@ -39,7 +40,7 @@ public class HelloRestController {
     @RequestMapping(method = RequestMethod.GET, value = "/hello",
              produces = "text/plain")
     public String hello() {
-        return "Hello world, Spring Boot rocks.";
+        return "Hello world,hello! Spring Boot rocks.";
     }
 
     @RequestMapping("/test")
@@ -47,10 +48,10 @@ public class HelloRestController {
     public int test(String id, String password){
         System.out.println(id);
         System.out.println(password);
-        return 0;
+        return 1;
     }
 
-    //账户登录
+
     @RequestMapping("/login")
     public int login(String id, String password){
         ModelMap map = new ModelMap();
@@ -65,18 +66,52 @@ public class HelloRestController {
                 return lib;
             }});
         for(Librarian lib:libList){
-            //如果发现相等，返回1
+
             if(lib.getID().equals(id)){
                 if(lib.getPassword().equals(password)) {
                     System.out.println("YES");
                     return 1;
+                }
+                else{
+                    return -1;
                 }
             }
             System.out.println(lib.getID());
             System.out.println(lib.getPassword());
         }
         map.addAttribute("id", libList);
-        //如果没有匹配数据，返回0
+
         return 0;
     }
+    @RequestMapping("/signup")
+    public int signup(String  id){
+     try{
+     Class.forName("com.mysql.jdbc.Driver");
+     String jdbc="jdbc:mysql://114.55.250.159:3306/library";
+    Connection conn=DriverManager.getConnection(jdbc, "root", "123");
+    Statement state=conn.createStatement();
+    ResultSet rset = state.executeQuery("select * from readers");
+    int sign=0;
+  while(rset.next()) {
+      String name=rset.getString("id");
+    if(name.equals(id)){
+    System.out.println("This account has existed!please try another one.");
+   sign=1;
+    }
+    }
+    if(sign==0)
+    {
+     String sql="insert into readers(id,password) value(?,'123456')";
+     PreparedStatement ps=conn.prepareStatement(sql);
+     ps.setString(1,id);
+     ps.executeUpdate();
+    }
+    }
+    catch (Exception e) {
+        e.printStackTrace();
+    }
+return 1;
+    }
+
+
 }
