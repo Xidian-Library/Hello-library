@@ -47,13 +47,12 @@ public class BookInquireController {
             sql = "select * from book where book_author=" + "'" + key + "'";
         } else if (keytype.equals("book_publisher")) {
             sql = "select * from book where book_publisher=" + "'" + key + "'";
-        } else if (keytype.equals("book_date")) {
-            sql = "select * from book where book_date=" + "'" + key + "'";
         } else if (keytype.equals("book_id")) {
             sql = "select * from book where book_id=" + "'" + key + "'";
-        }
-        else if (keytype.equals("copy_id")) {
+        } else if (keytype.equals("copy_id")) {
             sql = "select * from book where copy_id=" + "'" + key + "'";
+        } else if (keytype.equals("barcode")){
+            sql = "select * from book where barcode=" + "'" + key + "'";
         }
         List<Book> bookList = jdbcTemplate.query(sql, new RowMapper<Book>() {
             Book book = null;
@@ -67,7 +66,7 @@ public class BookInquireController {
                 book.setAuthor(rs.getString("book_author"));
                 book.setDate(rs.getString("book_date"));
                 book.setBookid(rs.getString("book_id"));
-                book.setCopyid(rs.getInt("copy_id"));
+                book.setCopyid(rs.getString("copy_id"));
                 book.setType(rs.getString("book_type"));
                 book.setAddress(rs.getString("book_address"));
                 book.setPrice(rs.getString("book_price"));
@@ -78,9 +77,6 @@ public class BookInquireController {
                 return book;
             }
         });
-        for (Book book : bookList) {
-            book.toString();
-        }
 
         return bookList;
     }
@@ -101,7 +97,7 @@ public class BookInquireController {
                 book.setAuthor(rs.getString("book_author"));
                 book.setDate(rs.getString("book_date"));
                 book.setBookid(rs.getString("book_id"));
-                book.setCopyid(rs.getInt("copy_id"));
+                book.setCopyid(rs.getString("copy_id"));
                 book.setType(rs.getString("book_type"));
                 book.setAddress(rs.getString("book_address"));
                 book.setPrice(rs.getString("book_price"));
@@ -110,20 +106,20 @@ public class BookInquireController {
                 book.setBrief(rs.getString("book_brief"));
                 book.setBarcode(rs.getString("barcode"));
                 book.setBorrowerid(rs.getString("borrowerid"));
-                book.setBorrowtime(rs.getString("borrow_time"));
-                book.setReturntime(rs.getString("return_time"));
+                book.setBorrowtime(rs.getTimestamp("borrow_time"));
+                book.setReturntime(rs.getTimestamp("return_time"));
+                book.setFine(rs.getFloat("fine"));
+                book.setDelaytime(rs.getInt("delay_time"));
+                book.setIspay(rs.getInt("ispay"));
                 return book;
             }
         });
-        for (Book book : bookList) {
-            System.out.println(book.getName());
-        }
 
         return bookList;
     }
 
 
-    public int  notreturn(int copy_idd) {
+   /* public int  notreturn(int copy_idd) {
         int signal=0;
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -143,7 +139,7 @@ public class BookInquireController {
                     Calendar cal = Calendar.getInstance();
                     int y = cal.get(Calendar.YEAR);
                     int m = cal.get(Calendar.MONTH);
-                    int d = cal.get(Calendar.DATE);//当前的时间比Returntime小就说明没有�?
+                    int d = cal.get(Calendar.DATE);//当前的时间比Returntime小就说明没有
 
                     if (year >= y) {
                         if (month >= m) {
@@ -164,7 +160,7 @@ public class BookInquireController {
 
 return signal;
 
-    }
+    }*/
 
     @RequestMapping("/Readerinformation")
     public void Readerinformation(String id) {
@@ -184,7 +180,7 @@ return signal;
                 if (name.equals(id)) {
                     borrownum += 1;
                     int bookindex = rset.getInt("copy_id");//获取书的indexid
-                    if (notreturn(bookindex)==1) {//没还这本�?
+                    if (rset.getDate("return_time")==null) {//没还这本
 
                         while(rset1.next())
                         {
@@ -209,12 +205,13 @@ return signal;
         }
     }
     
-    public static boolean isappointment(String copy_id) {
+    public static boolean isappointment(String barcode) {
     	try {
-    		Class.forName("com.mysql.jdbc.Driver");
+    	Class.forName("com.mysql.jdbc.Driver");
             String jdbc = "jdbc:mysql://114.55.250.159:3306/library";
             Connection conn = DriverManager.getConnection(jdbc, "root", "123");
-            String sql="select book_isappointment from book where copy_id="+copy_id;
+            String sql="select book_isappointment from book where barcode=";
+            sql=sql+"\""+barcode+"\"";
             Statement state = conn.createStatement();
             ResultSet rset = state.executeQuery(sql);
             String book_isappointment=null;
@@ -229,13 +226,14 @@ return signal;
     	return true;
     }
     
-    public static boolean isborrow(String copy_id)
+   public static boolean isborrow(String barcode)
     {
     	try {
-    		Class.forName("com.mysql.jdbc.Driver");
+    	Class.forName("com.mysql.jdbc.Driver");
             String jdbc = "jdbc:mysql://114.55.250.159:3306/library";
             Connection conn = DriverManager.getConnection(jdbc, "root", "123");
-            String sql="select book_isborrow from book where copy_id="+copy_id;
+            String sql="select book_isborrow from book where barcode=";
+            sql=sql+"\""+barcode+"\"";
             Statement state = conn.createStatement();
             ResultSet rset = state.executeQuery(sql);
             String book_isborrow=null;
@@ -250,13 +248,14 @@ return signal;
     	return true;
     }
     
-    public static boolean setappointment(String book_isappointment,String copy_id)
+    public static boolean setappointment(String book_isappointment,String barcode)
     {
     	try {
-    		Class.forName("com.mysql.jdbc.Driver");
+    Class.forName("com.mysql.jdbc.Driver");
             String jdbc = "jdbc:mysql://114.55.250.159:3306/library";
             Connection conn = DriverManager.getConnection(jdbc, "root", "123");
-            String sql="update book set book_isappointment=? where copy_id="+copy_id;
+            String sql="update book set book_isappointment=? where barcode=";
+            sql=sql+"\""+barcode+"\"";
             PreparedStatement ps=conn.prepareStatement(sql);
             ps.setObject(1, book_isappointment);
             ps.executeUpdate();

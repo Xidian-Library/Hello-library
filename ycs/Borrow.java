@@ -2,39 +2,47 @@ package io.junq.examples.boot;
 
 import java.io.Serializable;
 
+import java.util.Date;
+
 public class Borrow{
-    private int record_number;
     private String borrowerid;
-    private int copy_id;
-    private String borrow_time;
-    private String return_time;
+    private String barcode;
+    private Date borrow_time;
+    private Date return_time;
+    private Float fine;
+    private int delay_time;
+    private int ispay;
 
 
-    public int getRecordnumber(){return record_number;}
 
     public String getBorrowerid() {
         return borrowerid;
     }
 
-    public int getCopyid() { return copy_id; }
+    public String  getBarcode() { return barcode; }
 
-    public String getBorrowtime() {
-        return borrow_time;
-    }
+    public Date getBorrowtime() { return borrow_time; }
 
-    public String getRetuentime() { return return_time; }
+    public Date getRetuentime() { return return_time; }
 
-    public void setRecordnumber(int number){this.record_number=number;}
+    public Float getFine(){return fine;}
 
-    public void setBorrowerid(String borrowerid) {
-        this.borrowerid = borrowerid;
-    }
+    public int getDelaytime(){return delay_time;}
 
-    public void setCopyid(int copyid) { this.copy_id = copyid; }
+    public int getIspay(){return ispay;}
 
-    public void setBorrowtime(String borrowtime) {
-        this.borrow_time = borrowtime;
-    }
+    public void setBorrowerid(String borrowerid) { this.borrowerid = borrowerid; }
 
-    public void setReturntime(String returntime) { this.return_time = returntime; }
+    public void setBarcode(String barcode) { this.barcode = barcode; }
+
+    public void setBorrowtime(Date borrowtime) { this.borrow_time=borrowtime; }
+
+    public void setReturntime(Date returntime) { this.return_time=returntime; }
+
+    public void setFine(Float fine){ this.fine=fine;}
+
+    public void setDelaytime(int delaytime){ this.delay_time=delaytime;}
+
+    public void setIspay(int ispay){ this.ispay=ispay;}
+
 }

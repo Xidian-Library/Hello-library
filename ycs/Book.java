@@ -2,23 +2,50 @@ package io.junq.examples.boot;
 
 import java.io.Serializable;
 
+import java.util.Date;
+//import com.fasterxml.jackson.annotation.JsonFormat;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Book{
+
     private String book_name;
+
     private String book_author;
+
     private String book_publisher;
+
     private String book_date;
+
     private String book_id;
-    private int copy_id;
+
+    private String copy_id;
+
     private String book_type;
+
     private String book_address;
+
     private String book_price;
+
     private String book_isborrow;
+
     private String book_isappointment;
+
     private String book_brief;
+
     private String barcode;
+
     private String borrowerid;
-    private String borrow_time;
-    private String return_time;
+
+    private Date borrow_time;
+
+    private Date return_time;
+
+    private Float fine;
+
+    private int delay_time;
+
+    private int ispay;
+
     private String total;
 
 
@@ -68,11 +95,17 @@ public class Book{
         return borrowerid;
     }
 
-    public String getBorrowtime() {
+    public Date getBorrowtime() {
         return borrow_time;
     }
 
-    public String getRetuentime() { return return_time; }
+    public Date getRetuentime() { return return_time; }
+
+    public Float getFine(){return fine;}
+
+    public int getDelaytime(){return delay_time;}
+
+    public int getIspay(){return ispay;}
 
     public void setName(String name) {
         this.book_name=name;
@@ -92,7 +125,7 @@ public class Book{
 
     public void setBookid(String bookid) { this.book_id=bookid; }
 
-    public void setCopyid(int copyid) { this.copy_id=copy_id; }
+    public void setCopyid(String copyid) { this.copy_id=copyid; }
 
     public void setType(String type) { this.book_type=type; }
 
@@ -112,11 +145,17 @@ public class Book{
         this.borrowerid = borrowerid;
     }
 
-    public void setBorrowtime(String borrowtime) {
+    public void setBorrowtime(Date borrowtime) {
         this.borrow_time = borrowtime;
     }
 
-    public void setReturntime(String returntime) { this.return_time = returntime; }
+    public void setReturntime(Date returntime) { this.return_time = returntime; }
+
+    public void setFine(Float fine){ this.fine=fine;}
+
+    public void setDelaytime(int delaytime){ this.delay_time=delaytime;}
+
+    public void setIspay(int ispay){ this.ispay=ispay;}
 
     public String toString(){
         total=book_name+"  "+book_author+"  "+book_publisher+"  "+book_date+"  "+

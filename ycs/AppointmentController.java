@@ -35,49 +35,47 @@ public class AppointmentController {
 	
 	@RequestMapping("/add_appointment")
     @ResponseBody
-    public int add_appointment(String id, String title,String call_num){
-		if(BookInquireController.isappointment(call_num))
+    public int add_appointment(String rid,String barcode){
+		if(BookInquireController.isappointment(barcode))
 			return 1;
-		if(BookInquireController.isborrow(call_num))
+		if(BookInquireController.isborrow(barcode))
 			return 2;
 		String appointment_time=null;
 		Date day=new Date();    
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 		appointment_time=df.format(day);
-		String sql="insert into appointment (id,title,call_number,"
-				+ "appointment_time,take) values (?,?,?,?,?)";
-		Object[] ob= {id,title,call_num,appointment_time,0};
+		String sql="insert into appointment (rid,barcode,"
+				+ "appointment_time) values (?,?,?)";
+		Object[] ob= {rid,barcode,appointment_time};
         jdbcTemplate.update(sql, ob);
-        BookInquireController.setappointment("yes", call_num);
+        BookInquireController.setappointment("yes", barcode);
         return 0;
     }
 	@RequestMapping("/delete_appointment")
     @ResponseBody
-	public int delete_appointment(String id,String call_num)
+	public int delete_appointment(String rid,String barcode)
 	{
-		String sql="delete from appointment where id=? and call_number=?";
-		Object[] ob= {id,call_num};
+		String sql="delete from appointment where rid=? and barcode=?";
+		Object[] ob= {rid,barcode};
 		jdbcTemplate.update(sql, ob);
-		BookInquireController.setappointment("no", call_num);
+		BookInquireController.setappointment("no", barcode);
 		return 0;
 	}
 	@RequestMapping("/get_personal_appointment")
     @ResponseBody
-    public List get_personal_appointment(String id)
+    public List get_personal_appointment(String rid)
 	{
-		String sql="select * from appointment where id=";
-		sql=sql+"\""+id+"\"";
+		String sql="select * from appointment_information where rid=";
+		sql=sql+"\""+rid+"\"";
 		List<Appointment> appoint = jdbcTemplate.query(sql, new RowMapper<Appointment>() {
 			Appointment ap = null;
             @Override
             public Appointment mapRow(ResultSet rs, int rowNum) throws SQLException {
             	ap = new Appointment();
-            	ap.setid(rs.getString("id"));
-            	ap.settitle(rs.getString("title"));
-            	ap.setcall_number(rs.getString("call_number"));
-            	ap.setcollection_location(rs.getString("collection_location"));
+            	ap.setrid(rs.getString("rid"));
+            	ap.setbook_name(rs.getString("book_name"));
+            	ap.setbarcode(rs.getString("barcode"));
             	ap.setappointment_time(rs.getString("appointment_time"));
-            	ap.settake(rs.getString("take"));
                 return ap;
             }});
 		return appoint;
@@ -85,24 +83,21 @@ public class AppointmentController {
 	}
 	@RequestMapping("/get_all_appointment")
     @ResponseBody
-    public List get_all_appointment(String id)
+    public List get_all_appointment()
 	{
-		String sql="select * from appointment";
+		String sql="select * from appointment_information";
 		
 		List<Appointment> appoint = jdbcTemplate.query(sql, new RowMapper<Appointment>() {
 			Appointment ap = null;
             @Override
             public Appointment mapRow(ResultSet rs, int rowNum) throws SQLException {
             	ap = new Appointment();
-            	ap.setid(rs.getString("id"));
-            	ap.settitle(rs.getString("title"));
-            	ap.setcall_number(rs.getString("call_number"));
-            	ap.setcollection_location(rs.getString("collection_location"));
+            	ap.setrid(rs.getString("rid"));
+            	ap.setbook_name(rs.getString("book_name"));
+            	ap.setbarcode(rs.getString("barcode"));
             	ap.setappointment_time(rs.getString("appointment_time"));
-            	ap.settake(rs.getString("take"));
                 return ap;
             }});
-		System.out.print(appoint);
 		return appoint;
 		
 	}

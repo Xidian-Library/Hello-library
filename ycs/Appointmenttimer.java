@@ -24,7 +24,7 @@ public class Appointmenttimer {
 		 dar.setTime(day);
 		 dar.add(java.util.Calendar.HOUR_OF_DAY, -2);
 		 appointment_time=df.format(dar.getTime());
-		 String sql="update book set book_isappointment=\"no\" where copy_id=(select call_number from appointment where appointment_time<?)";
+		 String sql="update book set book_isappointment=\"no\" where barcode=(select barcode from appointment where appointment_time<?)";
 		 Object[] ob= {appointment_time};
 		 jdbcTemplate.update(sql, ob);
 		 sql="delete from appointment where appointment_time<?";
