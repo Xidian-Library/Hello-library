@@ -1,7 +1,3 @@
-/**
- * Created by Kay on 2016/3/8.
- */
-
 
 
 function login() {
@@ -9,9 +5,10 @@ function login() {
     var pass = document.getElementById("password").value;
     var testString='test';
     console.log('login');
-    if (username === "123") {
+    if (username === "") {
         alert("请输入用户名");
-    } else if (pass  === "") {
+    }
+    if (pass  === "") {
         alert("请输入密码");
     }
     else {
@@ -24,7 +21,7 @@ function login() {
         var url='http://114.55.250.159:8080/api/login?id='+username+'&password='+pass;
         var adminUrl='http://114.55.250.159:8080/api/AdminLogin?id=101&password=66';
         //var url='http://114.55.250.159:8080/api/test?id=2&password=2';
-        ajax.open('GET',adminUrl);
+        ajax.open('GET',url);
         //ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         ajax.send();
         ajax.onreadystatechange = function () {
