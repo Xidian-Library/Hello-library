@@ -852,7 +852,7 @@ input:focus {
 	position: relative;
 	font-size: 0.8725em;
 	-webkit-appearance: none;
-	text-transform: capitalize;
+
 }
 .search input[type="text"]:hover{
 	background: #ffffff;
@@ -3356,7 +3356,6 @@ h2.inner-tittle {
 .content section {
 	font-size: 1.25em;
 	padding: 3em 1em;
-	display: none;
 	max-width: 1230px;
 	margin: 0 auto;
 }
@@ -3381,9 +3380,7 @@ h2.inner-tittle {
 	padding-bottom: 2em;
 	border-bottom: 1px solid #47a3da;
 }
-.content section.content-current {
-	display: block;
-}
+
 .mediabox {
 	    float: left;
     width: 33%;
