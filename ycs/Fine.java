@@ -1,21 +1,17 @@
 package io.junq.examples.boot;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
-@RestController
-@CrossOrigin(origins = "*")
+import java.util.Map;
+
 public class Fine {
-	static int fine=1;
-	static int delay_day=30;
-	@RequestMapping("/api/setfine")
-	static public int setfine(int f) {
-		fine=f;
-		return 0;
+
+	static int fine = 0;
+	static int delay_day = 0;
+	static int security_depoisit = 0;
+
+	static void setter(Map<String, Integer> settings) {
+		Fine.fine = settings.get("book_fine");
+		Fine.delay_day = settings.get("return_period");
+		Fine.security_depoisit = settings.get("security_depoisit");
 	}
-	@RequestMapping("/api/setdelay")
-	static public int setdelay(int d) {
-		delay_day=d;
-		return 0;
-	}
+
 }
