@@ -5,15 +5,21 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Borrow{
+    private String bookname;
     private String borrowerid;
     private String barcode;
     private Date borrow_time;
     private Date return_time;
     private Float fine;
     private int delay_time;
-    private int ispay;
+    private boolean ispay;
+    private int sendmail;
+    private String email;
 
 
+    public String getBookname() {
+        return bookname;
+    }
 
     public String getBorrowerid() {
         return borrowerid;
@@ -29,7 +35,13 @@ public class Borrow{
 
     public int getDelaytime(){return delay_time;}
 
-    public int getIspay(){return ispay;}
+    public boolean getIspay(){return ispay;}
+
+    public int getSendmail(){return sendmail;}
+
+    public String getEmail(){return email;}
+
+    public void setBookname(String bookname) { this.bookname = bookname; }
 
     public void setBorrowerid(String borrowerid) { this.borrowerid = borrowerid; }
 
@@ -43,6 +55,9 @@ public class Borrow{
 
     public void setDelaytime(int delaytime){ this.delay_time=delaytime;}
 
-    public void setIspay(int ispay){ this.ispay=ispay;}
+    public void setIspay(boolean ispay){ this.ispay=ispay;}
 
+    public void setSendmail(int sendmail){this.sendmail=sendmail;}
+
+    public void setEmail(String email){this.email=email;}
 }

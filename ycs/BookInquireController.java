@@ -1,5 +1,6 @@
 package io.junq.examples.boot;
-import java.sql.Date;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,9 @@ import javax.annotation.Resource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.*;
+import io.junq.examples.boot.Borrower;
+import io.junq.examples.boot.Fine;
+import io.junq.examples.boot.Borbook;
 
 
 @RestController
@@ -38,15 +42,16 @@ public class BookInquireController {
     private JdbcTemplate jdbcTemplate;
 
     @RequestMapping("/bookinquire")
+    @ResponseBody
     public List bookinquire(String keytype, String key) {
         ModelMap map = new ModelMap();
         String sql = " ";
         if (keytype.equals("book_name")) {
-            sql = "select * from book where book_name=" + "'" + key + "'";
+            sql = "select * from book where book_name like " + "'%" + key + "%'";
         } else if (keytype.equals("book_author")) {
-            sql = "select * from book where book_author=" + "'" + key + "'";
+            sql = "select * from book where book_author like" + "'%" + key + "%'";
         } else if (keytype.equals("book_publisher")) {
-            sql = "select * from book where book_publisher=" + "'" + key + "'";
+            sql = "select * from book where book_publisher like " + "'%" + key + "%'";
         } else if (keytype.equals("book_id")) {
             sql = "select * from book where book_id=" + "'" + key + "'";
         } else if (keytype.equals("copy_id")) {
@@ -63,7 +68,6 @@ public class BookInquireController {
                 book.setName(rs.getString("book_name"));
                 book.setAuthor(rs.getString("book_author"));
                 book.setPublisher(rs.getString("book_publisher"));
-                book.setAuthor(rs.getString("book_author"));
                 book.setDate(rs.getString("book_date"));
                 book.setBookid(rs.getString("book_id"));
                 book.setCopyid(rs.getString("copy_id"));
@@ -82,6 +86,7 @@ public class BookInquireController {
     }
 
     @RequestMapping("/borrowrecord")
+    @ResponseBody
     public List borrowrecord(String id) {
         ModelMap map = new ModelMap();
         String sql = " ";
@@ -94,7 +99,6 @@ public class BookInquireController {
                 book.setName(rs.getString("book_name"));
                 book.setAuthor(rs.getString("book_author"));
                 book.setPublisher(rs.getString("book_publisher"));
-                book.setAuthor(rs.getString("book_author"));
                 book.setDate(rs.getString("book_date"));
                 book.setBookid(rs.getString("book_id"));
                 book.setCopyid(rs.getString("copy_id"));
@@ -106,11 +110,79 @@ public class BookInquireController {
                 book.setBrief(rs.getString("book_brief"));
                 book.setBarcode(rs.getString("barcode"));
                 book.setBorrowerid(rs.getString("borrowerid"));
-                book.setBorrowtime(rs.getTimestamp("borrow_time"));
-                book.setReturntime(rs.getTimestamp("return_time"));
+                book.setBorrowtime(rs.getDate("borrow_time"));
+                book.setReturntime(rs.getDate("return_time"));
                 book.setFine(rs.getFloat("fine"));
                 book.setDelaytime(rs.getInt("delay_time"));
-                book.setIspay(rs.getInt("ispay"));
+                book.setIspay(rs.getBoolean("ispay"));
+                return book;
+            }
+        });
+
+        return bookList;
+    }
+    
+
+    @RequestMapping("/borrowbook")
+    @ResponseBody
+    public List borrowbook(String id)
+    {
+        ModelMap map = new ModelMap();
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String sql="select book.book_name,borrow.borrow_time from borrow natural join book where borrowerid=" + "'" + id + "' and return_time is null";
+        List<Borbook> bookList = jdbcTemplate.query(sql, new RowMapper<Borbook>() {
+            Borbook book = null;
+            @Override
+            public Borbook mapRow(ResultSet rs, int rowNum) throws SQLException {
+                book = new Borbook();
+                book.setTitle(rs.getString("book_name"));
+
+                calendar.setTime(rs.getDate("borrow_time"));
+                calendar.add(Calendar.DATE, Fine.delay_day);
+
+                java.util.Date d1=calendar.getTime();
+                final String returntime=df.format(d1.getTime());
+
+                System.out.println(returntime);
+                book.setDate(returntime);
+                return book;
+            }
+        });
+
+        return bookList;
+    }
+    @RequestMapping("/notReturnbook")
+    @ResponseBody
+    public List notReturnbook(String id) {
+        ModelMap map = new ModelMap();
+        String sql = " ";
+        sql = "select * from borrow natural join book where borrowerid=" + "'" + id + "' and return_time is null";
+        List<Book> bookList = jdbcTemplate.query(sql, new RowMapper<Book>() {
+            Book book = null;
+            @Override
+            public Book mapRow(ResultSet rs, int rowNum) throws SQLException {
+                book = new Book();
+                book.setName(rs.getString("book_name"));
+                book.setAuthor(rs.getString("book_author"));
+                book.setPublisher(rs.getString("book_publisher"));
+                book.setDate(rs.getString("book_date"));
+                book.setBookid(rs.getString("book_id"));
+                book.setCopyid(rs.getString("copy_id"));
+                book.setType(rs.getString("book_type"));
+                book.setAddress(rs.getString("book_address"));
+                book.setPrice(rs.getString("book_price"));
+                book.setIsborrow(rs.getString("book_isborrow"));
+                book.setIsappointment(rs.getString("book_isappointment"));
+                book.setBrief(rs.getString("book_brief"));
+                book.setBarcode(rs.getString("barcode"));
+                book.setBorrowerid(rs.getString("borrowerid"));
+                book.setBorrowtime(rs.getDate("borrow_time"));
+                book.setReturntime(rs.getDate("return_time"));
+                book.setFine(rs.getFloat("fine"));
+                book.setDelaytime(rs.getInt("delay_time"));
+                book.setIspay(rs.getBoolean("ispay"));
                 return book;
             }
         });
@@ -118,93 +190,24 @@ public class BookInquireController {
         return bookList;
     }
 
+   @RequestMapping("/librarianinformation")
+   public List readerinformation(String id) throws SQLException {
+       ModelMap map = new ModelMap();
+        String sql="select * from librarian where id="+"'"+id+"'";
+       System.out.println(sql);
+       List<Librarian> information = jdbcTemplate.query(sql, new RowMapper<Librarian>() {
+           Librarian librarian= null;
+           @Override
+           public Librarian mapRow(ResultSet rs, int rowNum) throws SQLException {
+               librarian = new Librarian();
+               librarian.setID(rs.getString("id"));
+               librarian.setPassword(rs.getString("password"));
+               librarian.setName(rs.getString("name"));
+               return librarian;
+           }});
+       return information;
+   }
 
-   /* public int  notreturn(int copy_idd) {
-        int signal=0;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String jdbc = "jdbc:mysql://114.55.250.159:3306/library";
-            Connection conn = DriverManager.getConnection(jdbc, "root", "123");
-            Statement state = conn.createStatement();
-            ResultSet rset = state.executeQuery("select * from borrow");
-            while (rset.next()) {
-                if (rset.getInt("copy_id") == copy_idd) {
-                    String returntime = rset.getString("return_time");
-                    String year1 = returntime.substring(0, 4);
-                    String month1 = returntime.substring(5, 7);
-                    String day1 = returntime.substring(8);
-                    int year = Integer.valueOf(year1);
-                    int month = Integer.valueOf(month1);
-                    int day = Integer.valueOf(day1);
-                    Calendar cal = Calendar.getInstance();
-                    int y = cal.get(Calendar.YEAR);
-                    int m = cal.get(Calendar.MONTH);
-                    int d = cal.get(Calendar.DATE);//当前的时间比Returntime小就说明没有
-
-                    if (year >= y) {
-                        if (month >= m) {
-                            if (day > d) {
-                                signal=1;//此时是时间没超过了归还时间。按理说应该没还
-                            }
-                        }
-                    }
-                    else {
-                        signal=0;
-                    }
-                }
-            }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
-return signal;
-
-    }*/
-
-    @RequestMapping("/Readerinformation")
-    public void Readerinformation(String id) {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String jdbc = "jdbc:mysql://114.55.250.159:3306/library";
-            Connection conn = DriverManager.getConnection(jdbc, "root", "123");
-            Statement state = conn.createStatement();
-            Statement state1 = conn.createStatement();
-            ResultSet rset = state.executeQuery("select * from borrow");
-            ResultSet rset1 = state1.executeQuery("select * from book ");//从book表中找出book_name打印出来
-            System.out.println("User's id is " + id);//打印出读者的id
-            int borrownum = 0;
-            String sumname=null;
-            while (rset.next()) {
-                String name = rset.getString("borrowerid");
-                if (name.equals(id)) {
-                    borrownum += 1;
-                    int bookindex = rset.getInt("copy_id");//获取书的indexid
-                    if (rset.getDate("return_time")==null) {//没还这本
-
-                        while(rset1.next())
-                        {
-                               if(rset1.getInt("copy_id")==bookindex)
-                               {
-                                   String borrowbookname = rset1.getString("book_name");
-                                   System.out.println("This book is to be returned:" + borrowbookname);
-                               }
-
-                        }
-
-                    }
-
-                }
-            }
-            System.out.println("You had borrowed totally " + borrownum + " books");
-
-
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
     public static boolean isappointment(String barcode) {
     	try {
     	Class.forName("com.mysql.jdbc.Driver");
@@ -267,4 +270,5 @@ return signal;
         }
     	return false;
     }
+
 }

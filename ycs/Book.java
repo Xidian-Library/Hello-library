@@ -44,7 +44,7 @@ public class Book{
 
     private int delay_time;
 
-    private int ispay;
+    private boolean ispay;
 
     private String total;
 
@@ -105,7 +105,7 @@ public class Book{
 
     public int getDelaytime(){return delay_time;}
 
-    public int getIspay(){return ispay;}
+    public boolean getIspay(){return ispay;}
 
     public void setName(String name) {
         this.book_name=name;
@@ -155,7 +155,7 @@ public class Book{
 
     public void setDelaytime(int delaytime){ this.delay_time=delaytime;}
 
-    public void setIspay(int ispay){ this.ispay=ispay;}
+    public void setIspay(boolean ispay){ this.ispay=ispay;}
 
     public String toString(){
         total=book_name+"  "+book_author+"  "+book_publisher+"  "+book_date+"  "+
