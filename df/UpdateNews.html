@@ -2,16 +2,19 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Template</title>
+    <title>Update News</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Gretong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- Bootstrap Core CSS -->
+    <link href="css/updateNews.css" rel="stylesheet" type="text/css" />
+    <link href="css/addbook(previous).css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
     <!-- Custom CSS -->
     <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <link href="css/realIndex2.css" rel="stylesheet" type="text/css">
     <!-- Graph CSS -->
     <link href="css/font-awesome.css" rel="stylesheet">
     <!-- jQuery -->
@@ -20,7 +23,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- lined-icons -->
     <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
 
-    <script src="js/template.js"></script>
     <!-- //lined-icons -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <!--pie-chart--->
@@ -61,6 +63,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
 
     </script>
+    <script src="js/template.js"></script>
+    <script src="js/updateNews.js"></script>
 </head>
 <body>
 <div class="page-container">
@@ -89,10 +93,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!-- /top_bg -->
             </div>
             <div class="header_bg">
+
                 <div class="header">
                     <div class="head-t">
                         <div class="logo">
-                            <a href="PersonalPage.html">
+                            <a href="PersonalPage   .html">
                                 <img src="images/logo.png" class="img-responsive" alt="">
                             </a>
                         </div>
@@ -103,6 +108,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="login">
                                         <div id="loginContainer">
                                             <button class="btn btn-danger-outline radius" onclick="logout()">Logout</button>
+
                                         </div>
                                     </div>
                                 </div>
@@ -124,6 +130,80 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!--//area-->
                 <!--area-->
                 <div class="women_main">
+                    <div class="search">
+                        <label for="titleName"></label><input id="titleName" type="text" value="" placeholder="search the title to update news">
+                        <input type="submit" value="" onclick="searchTitle()">
+                    </div>
+                    <br>
+                    <div id="news">
+                        <div class="hl__staggered-type-list__list-wrapper">
+                            <div class="hl__staggered-type-list__list">
+<!--                                <a class="hl__type-promo" onclick="choose()" title="Use Library Resources for Remote Teaching" style="background-image: url('images/8.jpg')">-->
+<!--                                    <div class="hl__type-promo__header">-->
+<!--                                        <div class="hl__type-promo__icon">-->
+<!--                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30">-->
+<!--                                                    <g transform="translate(-169 -5817)"><path fill="#f8c21b" d="M199 5832a15 15 0 1 1-30 0 15 15 0 0 1 30 0zm-17.69-2.69l-4.64 10.02 10.02-4.64 4.64-10.02zm2.69 1.3a1.4 1.4 0 0 1 .99 2.38A1.4 1.4 0 0 1 183 5831c.27-.27.63-.4.99-.4z"></path></g>-->
+<!--                                            </svg>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="hl__type-promo__details">-->
+<!--                                        <h3 class="hl__type-promo__title">Use Library Resources for Remote Teaching</h3>-->
+<!--                                        <div class="hl__type-promo__description">-->
+<!--                                            Planning on teaching a class remotely? Harvard Library can help with that.-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content tab">
+                        <section id="section-1" class="content-current">
+                            <form>
+                                <div class="fo-top">
+                                    <div class="form-group">
+                                        <label for="title" class="col-sm-2 control-labe20">Title</label>
+                                        <div class="col-sm-8 ctl">
+                                            <input type="text" class="form-control1" value="" onfocus=judge_blank(this) onkeyup="judge_blank(this)" id="title" placeholder="The title of the news">
+                                        </div>
+                                        <div class="col-sm-2 hp">
+                                            <p class="red" id="title_p">*</p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+
+                                <div class="fo-top">
+                                    <div class="form-group">
+                                        <label for="file" class="col-sm-2 control-labe20">Background Image</label>
+                                        <div class="col-sm-8 ctl">
+                                            <form enctype="multipart/form-data">
+                                                <input type="file" accept="image/*" value=""  id="file">
+                                            </form>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+
+                                <div class="fo-top">
+                                    <div class="form-group">
+                                        <label for="content" class="col-sm-2 control-labe20">Content</label>
+                                        <div class="col-sm-8 ctl">
+                                            <textarea type="text" class="contentText" value="" onfocus="judge_blank(this)" onkeyup="judge_blank(this)" id="content"></textarea>
+                                        </div>
+                                        <div class="col-sm-2 hp">
+                                            <p class="red" id="content_p">*</p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+
+                            </form>
+                            <div class="sub-but">
+                                <input type="button" class="submit_button" onclick="Update()" value="Update">
+                            </div>
+                        </section>
+                    </div>
 
                 </div>
                 <!--//area-->

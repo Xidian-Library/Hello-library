@@ -24,7 +24,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- //lined-icons -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <!--pie-chart--->
-
+    <script src="js/template.js"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -95,15 +95,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="header">
                     <div class="head-t">
                         <div class="logo">
-                            <img src="images/Logo.png" class="img-responsive" alt="">
-                        </div>
+                            <a href="PersonalPage.html">
+                                <img src="images/logo.png" class="img-responsive" alt="">
+                            </a>                        </div>
                         <!-- start header_right -->
                         <div class="header_right">
                             <div class="rgt-bottom">
                                 <div class="log">
                                     <div class="login">
-                                        <div id="loginContainer"><a href="realIndex.html" class=""><span>Logout</span></a>
-
+                                        <div id="loginContainer">
+                                            <button class="btn btn-danger-outline radius" onclick="logout()">Logout</button>
                                         </div>
                                     </div>
                                 </div>
@@ -124,10 +125,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="content">
                 <!--//area-->
                 <!--area-->
-                <div>
+                <div class="women_main">
                     <!--修改图书部分-->
                     <div class="search">
-                            <input id="bookname" type="text" value="" placeholder="search the book to edit">
+                            <input id="bookname" type="text" value="" placeholder="search the book name to edit">
                             <input type="submit" value="" onclick="search()">
                     </div>
 
@@ -330,14 +331,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul id="menu-academico-sub" >
                         <li id="menu-academico-avaliacoes" ><a href="RegisterReader.html">Register</a></li>
                         <li id="menu-academico-avaliacoes" ><a href="ReaderHistory.html">Reader History</a></li>
+                        <li id="menu-academico-avaliacoes" ><a href="Delete&EditReader.html">Delete&Edit</a></li>
                         <li id="menu-academico-boletim" ><a href="LendBook.html">Lend Book</a></li>
                         <li id="menu-academico-boletim" ><a href="ReturnBook.html">Return Book</a></li>
+                        <li id="menu-academico-boletim" ><a href="payFine.html">Pay Fine</a></li>
                     </ul>
                 </li>
                 <li><a href="#"><i class="lnr lnr-chart-bars"></i> <span>Library Management</span> <span class="fa fa-angle-right" style="float: right"></span></a>
                     <ul>
-                        <li><a href="IncomeHistory.html">Income History</a></li>
+                        <li><a href="IncomeHistory.html?_ijt=fg4qdths8s2g1rda2nis81sooj">Income History</a></li>
                         <li><a href="PostNews.html">Post News</a></li>
+                        <li><a href="UpdateNews.html">Update News</a></li>
+                        <li><a href="DeleteNews.html">Delete News</a></li>
                     </ul>
                 </li>
             </ul>

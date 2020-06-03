@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Template</title>
+	<title>Librarian</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Gretong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -13,6 +13,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
 	<!-- Graph CSS -->
 	<link href="css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/editbook.css"  type="text/css">
 	<!-- jQuery -->
 	<link href='https://fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'/>
 	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -25,6 +26,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/jquery-1.10.2.min.js"></script>
 	<!--pie-chart--->
 	<script src="js/pie-chart.js" type="text/javascript"></script>
+	<script src="js/template.js"></script>
 	<script type="text/javascript">
 
 		$(document).ready(function () {
@@ -62,6 +64,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 
 	</script>
+	<script src="js/personalPage.js"></script>
 </head>
 <body>
 <div class="page-container">
@@ -94,27 +97,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header">
 					<div class="head-t">
 						<div class="logo">
-							<img src="images/logo.png" class="img-responsive" alt="">
-						</div>
+							<a href="PersonalPage.html">
+								<img src="images/logo.png" class="img-responsive" alt="">
+							</a>						</div>
 						<!-- start header_right -->
 						<div class="header_right">
 							<div class="rgt-bottom">
 								<div class="log">
 									<div class="login">
-										<div id="loginContainer"><a href="realIndex.html" class=""><span>Logout</span></a>
-
+										<div id="loginContainer">
+											<button class="btn btn-danger-outline radius" onclick="logout()">Logout</button>
 										</div>
 									</div>
 								</div>
 								<div class="clearfix"> </div>
 							</div>
 							<br>
-							<div class="search">
-								<form>
-									<input type="text" value="" placeholder="search...">
-									<input type="submit" value="">
-								</form>
-							</div>
+<!--							<div class="search">-->
+<!--								<form>-->
+<!--									<input type="text" value="" placeholder="search...">-->
+<!--									<input type="submit" value="" onclick="search()">-->
+<!--								</form>-->
+<!--							</div>-->
 							<div class="clearfix"> </div>
 						</div>
 						<div class="clearfix"> </div>
@@ -123,35 +127,53 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			</div>
 			<!-- //header-ends -->
-			<div>
-				<table border="1" height="300" width="1000" cellspacing="0" align="center">
-					<tr>
-						<td style="background-color:#000000"></td>
-						<td style="background-color:#A52A2A"></td>
-					</tr>
-					<tr align="center">
-						<td >user</td>
-						<td>contant</td>
-					</tr>
-					<tr align="center">
-						<td>e-mail</td>
-						<td>contant</td>
-					</tr>
-					<tr align="center">
-						<td>loan</td>
-						<td>contant</td>
-					</tr>
-					<tr align="center">
-						<td>outstanding</td>
-						<td>contant</td>
-					</tr>
-				</table>
-			</div>
+
 			<!--content-->
 			<div class="content">
 				<!--//area-->
 				<!--area-->
+				<div class="women_main">
+					<div class="search">
+						<input id="bookname" type="text" value="" placeholder="search the book name to view">
+						<input type="submit" value="" onclick="search()">
+					</div>
+				</div>
+				<div >
+					<ol class="book" id="demo">
 
+						<!--
+                        <li id="li-1">
+                            <div class="left">
+                                <img src="images/11.jpg" alt="" width="90px" height="150px">
+                            </div>
+                            <div class="right">
+                                <div class="toptitle">
+                                    网页设计与制作
+                                    <a href="#">Edit</a>
+                                </div>
+                                <p>
+                                    <span>Literature Type：</span>Professional
+                                </p>
+                                <p>
+                                    <span>Author:</span>Li Zhou
+                                </p>
+                                <p>
+                                <span>
+                                    Year of Publication:
+                                </span>
+                                    2009     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span>
+                                    Publishing House:
+                                </span>
+                                    Higher Education Press
+                                </p>
+                            </div>
+                        </li>
+                        <li id="li-2"></li>
+                        -->
+
+					</ol>
+				</div>
 				<!--//area-->
 				<div class="fo-top-di">
 
@@ -187,14 +209,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul id="menu-academico-sub" >
 						<li id="menu-academico-avaliacoes" ><a href="RegisterReader.html">Register</a></li>
 						<li id="menu-academico-avaliacoes" ><a href="ReaderHistory.html">Reader History</a></li>
+						<li id="menu-academico-avaliacoes" ><a href="Delete&EditReader.html">Delete&Edit</a></li>
 						<li id="menu-academico-boletim" ><a href="LendBook.html">Lend Book</a></li>
 						<li id="menu-academico-boletim" ><a href="ReturnBook.html">Return Book</a></li>
+						<li id="menu-academico-boletim" ><a href="payFine.html">Pay Fine</a></li>
 					</ul>
 				</li>
 				<li><a href="#"><i class="lnr lnr-chart-bars"></i> <span>Library Management</span> <span class="fa fa-angle-right" style="float: right"></span></a>
 					<ul>
-						<li><a href="IncomeHistory.html">Income History</a></li>
+						<li><a href="IncomeHistory.html?_ijt=fg4qdths8s2g1rda2nis81sooj">Income History</a></li>
 						<li><a href="PostNews.html">Post News</a></li>
+						<li><a href="UpdateNews.html">Update News</a></li>
+						<li><a href="DeleteNews.html">Delete News</a></li>
 					</ul>
 				</li>
 			</ul>

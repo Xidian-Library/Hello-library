@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Template</title>
+    <title>Pay Fine</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Gretong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -11,6 +11,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
     <!-- Custom CSS -->
+    <link href="css/payFine.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel='stylesheet' type='text/css' />
     <!-- Graph CSS -->
     <link href="css/font-awesome.css" rel="stylesheet">
@@ -24,6 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- //lined-icons -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <!--pie-chart--->
+    <script src="js/payFine.js"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -124,7 +126,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!--//area-->
                 <!--area-->
                 <div class="women_main">
+                    <div class="catalog">
+                        <div id="tabs" class="tabs">
 
+                            <div class="graph" id="book-table">
+                                <nav>
+                                    <ul>
+                                        <li class="tab-current"><a href="#" class="icon-shop"><span onclick="getFine()">Pay Fine</span></a></li>
+                                    </ul>
+                                </nav>
+                                <div class="content tab" >
+                                    <section id="section-1" class="content-current">
+
+                                        <div class="fo-top">
+                                            <div class="form-group">
+                                                <label for="readerId" class="col-sm-2 control-labe20">Reader ID</label>
+                                                <div class="col-sm-8 ctl">
+                                                    <input type="text" class="form-control1" value="" onfocus=judge_blank(this) onkeyup="judge_blank(this)" id="readerId" placeholder="Input the reader id">
+                                                </div>
+                                                <div class="col-sm-2 hp">
+                                                    <p class="red" id="readerId_p">*</p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+
+                                    </section>
+                                </div><!-- /content -->
+                            </div>
+                            <div  id="fine" display="none">
+                                <p>The fine you owe is:<span id="fineNum"></span> Please pay it!</p>
+                                <div>
+                                    <input type="button" value="Pay" class="btn btn-success radius" onclick="pay()">
+                                    <input type="button" value="Cancel" class="btn btn-danger radius" onclick="cancel()">
+                                </div>
+                            </div>
+                            <!-- /tabs -->
+                        </div>
+
+                    </div>
                 </div>
                 <!--//area-->
                 <div class="fo-top-di">

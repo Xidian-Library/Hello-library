@@ -26,6 +26,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- //lined-icons -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <!--pie-chart--->
+    <script src="js/template.js"></script>
     <script src="js/pie-chart.js" type="text/javascript"></script>
     <script type="text/javascript">
 
@@ -79,22 +80,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="header_top">
                         <div class="top_right">
                             <ul>
-                                <li><a href="#">help</a></li>|
-                                <li><a href="#">Contact</a></li>|
-                                <li><a href="#">Delivery information</a></li>
+
                             </ul>
                         </div>
                         <div class="top_left">
-                            <h2><span></span> Call us : 032 2352 782</h2>
+                            <h2>Email: damgmaple7@gmail.com</h2>
                         </div>
-                        <div class="clearfix"></div>
+                        <div class="clearfix"> </div>
                     </div>
+
                 </div>
-                <!--清除浮动-->
                 <div class="clearfix"></div>
                 <!-- /top_bg -->
             </div>
+            <div class="header_bg">
+                <div class="header">
+                    <div class="head-t">
+                        <div class="logo">
+                            <a href="PersonalPage.html">
+                                <img src="images/logo.png" class="img-responsive" alt="">
+                            </a>
+                        </div>
+                        <!-- start header_right -->
+                        <div class="header_right">
+                            <div class="rgt-bottom">
+                                <div class="log">
+                                    <div class="login">
+                                        <div id="loginContainer">
+                                            <button class="btn btn-danger-outline radius" onclick="logout()">Logout</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <br>
 
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+
+            </div>
             <!-- //header-ends -->
 
             <!--content-->
@@ -107,8 +134,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="graph">
                                 <nav>
                                     <ul>
-                                        <li class="tab-current"><a href="#" class="icon-shop"><span>AddBook</span></a></li>
-
+                                        <li class="tab-current"><a href="#" class="icon-shop" onclick="back()"><span>AddBook</span></a></li>
+                                        <li><a href="#section-2" class="icon-shop" onclick="turn()"><span>AddDuplicate</span></a></li>
                                         <!--<li><a href="#section-2" class="icon-cup"><span>Lorem</span></a></li>-->
                                         <!--<li><a href="#section-3" class="icon-food"><span>Ipsum</span></a></li>-->
                                         <!--<li><a href="#section-4" class="icon-lab"><span>Desc</span></a></li>-->
@@ -171,7 +198,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </div>
                                         <div class="fo-top">
                                             <div class="form-group">
-                                                <label for="isbn" class="col-sm-2 control-labe20">BookId</label>
+                                                <label for="isbn" class="col-sm-2 control-labe20">ISBN</label>
                                                 <div class="col-sm-8 ctl">
                                                     <input type="text" class="form-control1" value="" onfocus=judge_blank(this) onkeyup="judge_blank(this)" id="isbn" placeholder="The isbn of this book">
                                                 </div>
@@ -229,6 +256,57 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>
+                                        <div class="fo-top">
+                                            <div class="form-group">
+                                                <label for="cover" class="col-sm-2 control-labe20">Cover Image</label>
+                                                <div class="col-sm-8 ctl">
+                                                    <form enctype="multipart/form-data">
+                                                        <input id="cover" name="upfile" accept="image/*" type="file" class="form-control-file" onfocus=judge_blank(this) onchange="judge_blank(this)">
+                                                    </form>
+                                                    <input id="file" type="text" placeholder="Please upload picture" class="form-control1" readonly>
+                                                    <button id="uptea" type="button" class="btn but1" >Upload</button>
+                                                </div>
+                                                <div class="col-sm-2 hp">
+                                                    <p class="red" id="cover_p">*</p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                        <div class="fo-top" id="picture">
+                                            <div class="form-group">
+                                                <label for="barcode" class="barcode col-sm-2 control-labe20">Barcode</label>
+                                                <div class="col-sm-8 ctl pic">
+                                                    <img id="barcode" src="http://114.55.250.159:8080/test3.png">
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <section id="section-2">
+                                        <div class="fo-top">
+                                            <div class="form-group">
+                                                <label for="isbn_dup" class="col-sm-2 control-labe20">ISBN</label>
+                                                <div class="col-sm-8 ctl">
+                                                    <input type="text" class="form-control1" value="" onfocus=judge_blank(this) onkeyup="judge_blank(this)" id="isbn_dup" placeholder="The isbn of books">
+                                                </div>
+                                                <div class="col-sm-2 hp">
+                                                    <p class="red" id="isbn_dup_p">*</p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                        <div class="fo-top">
+                                            <div class="form-group">
+                                                <label for="number" class="col-sm-2 control-labe20">Number</label>
+                                                <div class="col-sm-8 ctl">
+                                                    <input type="text" class="form-control1" value="" onfocus=judge_blank(this) onkeyup="judge_blank(this)" id="number" placeholder="The number of books">
+                                                </div>
+                                                <div class="col-sm-2 hp">
+                                                    <p class="red" id="number_p">*</p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
                                     </section>
                                 </div><!-- /content -->
                             </div>
@@ -238,49 +316,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <script>
                             new CBPFWTabs( document.getElementById( 'tabs' ) );
                         </script>
-
+                        <script>
+                            document.getElementById("uptea").addEventListener("click",function () {
+                                document.getElementById("cover").click();
+                            });
+                            document.getElementById("cover").addEventListener("change",function () {
+                                document.getElementById("file").value=document.getElementById("cover").value;
+                            });
+                        </script>
                     </div>
-                    <div class="sub-but">
+                    <div class="sub-but" id="sub-but">
                         <input type="button" class="submit_button" onclick="sub_book()" value="ADD">
+                        <input type="button" class="submit_button" onclick="turn_rad()" value="RESET">
                     </div>
+                    <div class="sub-but-1" id="sub-but-1">
+                        <input type="button" class="submit_button" onclick="sub_book_1()" value="ADD">
+                        <input type="button" class="submit_button" onclick="turn_rad_1()" value="RESET">
+                    </div>
+
                     <!-- end content -->
+                </div>
+                <div class="fo-top-di">
 
                     <div class="footer">
-                        <div class="col-md-3 cust">
-                            <h4>CUSTOMER CARE</h4>
-                            <li><a href="contact.html">Help Center</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="details.html">How To Buy</a></li>
-                            <li><a href="checkout.html">Delivery</a></li>
-                        </div>
-                        <div class="col-md-2 abt">
-                            <h4>ABOUT US</h4>
-                            <li><a href="products.html">Our Stories</a></li>
-                            <li><a href="products.html">Press</a></li>
-                            <li><a href="faq.html">Career</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </div>
-                        <div class="col-md-2 myac">
-                            <h4>MY ACCOUNT</h4>
-                            <li><a href="register.html">Register</a></li>
-                            <li><a href="checkout.html">My Cart</a></li>
-                            <li><a href="checkout.html">Order History</a></li>
-                            <li><a href="details.html">Payment</a></li>
-                        </div>
-                        <div class="col-md-5 our-st">
-                            <div class="our-left">
-                                <h4>OUR STORES</h4>
-                            </div>
 
-                            <li><i class="add"> </i>Mark peter</li>
-                            <li><i class="phone"> </i>012-586987</li>
-                            <li><a href="mailto:info@example.com"><i class="mail"> </i>info@sitename.com </a></li>
-                        </div>
-                        <div class="clearfix"> </div>
-                        <p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.777moban.com/" target="_blank" title="777模板">777模板</a> - Collect from <a href="http://www.777moban.com/" title="网页模板" target="_blank">网页模板</a></p>
+                        <p>Copyright &copy; 2020.Mandarin Library Limited Company.</p>
                     </div>
                 </div>
-
             </div>
             <!--content-->
         </div>
@@ -308,14 +370,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul id="menu-academico-sub" >
                         <li id="menu-academico-avaliacoes" ><a href="RegisterReader.html">Register</a></li>
                         <li id="menu-academico-avaliacoes" ><a href="ReaderHistory.html">Reader History</a></li>
+                        <li id="menu-academico-avaliacoes" ><a href="Delete&EditReader.html">Delete&Edit</a></li>
                         <li id="menu-academico-boletim" ><a href="LendBook.html">Lend Book</a></li>
                         <li id="menu-academico-boletim" ><a href="ReturnBook.html">Return Book</a></li>
+                        <li id="menu-academico-boletim" ><a href="payFine.html">Pay Fine</a></li>
                     </ul>
                 </li>
                 <li><a href="#"><i class="lnr lnr-chart-bars"></i> <span>Library Management</span> <span class="fa fa-angle-right" style="float: right"></span></a>
                     <ul>
-                        <li><a href="IncomeHistory.html">Income History</a></li>
+                        <li><a href="IncomeHistory.html?_ijt=fg4qdths8s2g1rda2nis81sooj">Income History</a></li>
                         <li><a href="PostNews.html">Post News</a></li>
+                        <li><a href="UpdateNews.html">Update News</a></li>
+                        <li><a href="DeleteNews.html">Delete News</a></li>
                     </ul>
                 </li>
             </ul>

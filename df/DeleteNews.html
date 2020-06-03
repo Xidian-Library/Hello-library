@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Template</title>
+    <title>Delete News</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Gretong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -12,6 +12,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
     <!-- Custom CSS -->
     <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <link href="css/updateNews.css" rel="stylesheet" type="text/css">
+    <link href="css/addbook(previous).css" rel="stylesheet" type="text/css">
+    <link href="css/realIndex2.css" rel="stylesheet" type="text/css">
     <!-- Graph CSS -->
     <link href="css/font-awesome.css" rel="stylesheet">
     <!-- jQuery -->
@@ -20,7 +23,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- lined-icons -->
     <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
 
-    <script src="js/template.js"></script>
     <!-- //lined-icons -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <!--pie-chart--->
@@ -61,6 +63,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
 
     </script>
+    <script src="js/template.js"></script>
+    <script src="js/updateNews.js"></script>
 </head>
 <body>
 <div class="page-container">
@@ -89,6 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!-- /top_bg -->
             </div>
             <div class="header_bg">
+
                 <div class="header">
                     <div class="head-t">
                         <div class="logo">
@@ -124,8 +129,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!--//area-->
                 <!--area-->
                 <div class="women_main">
+                    <div class="search">
+                        <label for="titleName"></label><input id="titleName" type="text" value="" placeholder="search the title to update news">
+                        <input type="submit" value="" onclick="searchTitle()">
+                    </div>
+                    <br>
+                    <div id="news">
 
+                        <div class="hl__staggered-type-list__list-wrapper">
+                        </div>
+
+                    </div>
+                    <div class="sub-but">
+                        <input type="button" class="submit_button" onclick="Delete()" value="Delete">
+                    </div>
+                    <div id="section-1">
+
+                    </div>
                 </div>
+
                 <!--//area-->
                 <div class="fo-top-di">
 

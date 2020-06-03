@@ -1,10 +1,333 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>RegisterReader</title>
-</head>
+<title>register reader</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gretong Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!-- Graph CSS -->
+<link href="css/font-awesome.css" rel="stylesheet"> 
+<!-- jQuery -->
+<link href='https://fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<!-- lined-icons -->
+<link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
+<script src="js/simpleCart.min.js"> </script>
+<script src="js/amcharts.js"></script>  
+<script src="js/serial.js"></script>    
+<script src="js/light.js"></script> 
+<!-- //lined-icons -->
+<script src="js/jquery-1.10.2.min.js"></script>
+   <!--pie-chart--->
+    <script src="js/template.js"></script>
+<script src="js/pie-chart.js" type="text/javascript"></script>
+ <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#demo-pie-1').pieChart({
+                barColor: '#3bb2d0',
+                trackColor: '#eee',
+                lineCap: 'round',
+                lineWidth: 8,
+                onStep: function (from, to, percent) {
+                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
+                }
+            });
+
+            $('#demo-pie-2').pieChart({
+                barColor: '#fbb03b',
+                trackColor: '#eee',
+                lineCap: 'butt',
+                lineWidth: 8,
+                onStep: function (from, to, percent) {
+                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
+                }
+            });
+
+            $('#demo-pie-3').pieChart({
+                barColor: '#ed6498',
+                trackColor: '#eee',
+                lineCap: 'square',
+                lineWidth: 8,
+                onStep: function (from, to, percent) {
+                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
+                }
+            });
+
+           
+        });
+
+    </script>
+</head> 
 <body>
+   <div class="page-container">
+   <!--/content-inner-->
+    <div class="left-content">
+       <div class="inner-content">
+        <!-- header-starts -->
+           <div class="header-section">
+               <!-- top_bg -->
+               <div class="top_bg">
+
+                   <div class="header_top">
+                       <div class="top_right">
+                           <ul>
+
+                           </ul>
+                       </div>
+                       <div class="top_left">
+                           <h2>Email: damgmaple7@gmail.com</h2>
+                       </div>
+                       <div class="clearfix"> </div>
+                   </div>
+
+               </div>
+               <div class="clearfix"></div>
+               <!-- /top_bg -->
+           </div>
+           <div class="header_bg">
+               <div class="header">
+                   <div class="head-t">
+                       <div class="logo">
+                           <a href="PersonalPage.html">
+                               <img src="images/logo.png" class="img-responsive" alt="">
+                           </a>
+                       </div>
+                       <!-- start header_right -->
+                       <div class="header_right">
+                           <div class="rgt-bottom">
+                               <div class="log">
+                                   <div class="login">
+                                       <div id="loginContainer">
+                                           <button class="btn btn-danger-outline radius" onclick="logout()">Logout</button>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="clearfix"> </div>
+                           </div>
+                           <br>
+
+                           <div class="clearfix"> </div>
+                       </div>
+                       <div class="clearfix"> </div>
+                   </div>
+               </div>
+
+           </div>
+
+           <!--content-->
+            <div class="content">
+                <div class="women_main">
+    <!-- start content -->
+<div class="registration">
+        <div class="registration_left">
+        <h2> <span> create a reader account </span></h2>
+        <!-- [if IE] 
+            < link rel='stylesheet' type='text/css' href='ie.css'/>  
+         [endif] -->  
+          
+        <!-- [if lt IE 7]>  
+            < link rel='stylesheet' type='text/css' href='ie6.css'/>  
+        <! [endif] -->  
+        <script>
+            (function() {
+        
+            // Create input element for testing
+            var inputs = document.createElement('input');
+            
+
+            
+            // Create the supports object
+            var supports = {};
+            
+            supports.autofocus   = 'autofocus' in inputs;
+            supports.required    = 'required' in inputs;
+            supports.placeholder = 'placeholder' in inputs;
+        
+            // Fallback for autofocus attribute
+            if(!supports.autofocus) {
+                
+            }
+            
+            // Fallback for required attribute
+            if(!supports.required) {
+                
+            }
+        
+            // Fallback for placeholder attribute
+            if(!supports.placeholder) {
+                
+            }
+            
+            // Change text inside send button on submit
+            var send = document.getElementById('register-submit');
+            if(send) {
+                send.onclick = function () {
+                    this.innerHTML = '...Sending';
+                }
+            }
+        
+        })();
+        </script>
+         <div class="registration_form">
+         <!-- Form -->
+            <form>
+                <div>
+                    <label>
+                        <input autocomplete="off" id='lsy' style="text-transform:lowercase;"
+                        placeholder="Phone Number:" type="text" tabindex="1" required autofocus>
+                    </label>
+                </div>
+
+                 <div>
+                    <label>
+                        <input autocomplete="off" style="text-transform:lowercase;"
+                        id='lsy3' placeholder="Email:" type="text" tabindex="1" required autofocus>
+
+                    </label>
+                </div>
+               
+               <div class="sky-form">
+                    <div class="sky_form1">
+                        <ul>
+                            
+                        <li><label class="radio"><input id='lsy1' type="radio" name="radio" onclick="check(this)"><i></i>Deposit Has Paid</label></li>
+                            <div class="clearfix"></div>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+               
+                <div>
+                    <input type="submit" value="create an account" onclick="lsy2()">
+                </div>
+              
+            </form>
+            <!-- /Form -->
+        </div>
+    </div>
+<!--实现选中取消radio按钮-->
+    <script>
+            function check(radio)
+        {
+            if (radio.tag==1)
+            {
+                radio.checked=false;
+                radio.tag=0;
+            }
+            else
+            {
+                radio.checked=true;
+                radio.tag=1
+            }
+        }
+    </script>
+    
+<!--实现向服务器传送数据-->
+   <script>
+    function lsy2(){
+        var num = document.getElementById("lsy").value;
+        var hh = document.getElementById("lsy3").value;
+        var radio = document.getElementsByName("radio");
+       if(num.length==0 ){
+            alert("Please Input The Phone Number");
+            
+        }
+        else if(!radio[0].checked){
+            alert("Please Select The Button");
+        }
+        else if(num.length!=0&&radio[0].checked) {
+            var ajax = new XMLHttpRequest();
+            //var url=http://114.55.250.159:8080/api/signup?id=jyj&email=1836341459@qq.com;
+            var url='http://114.55.250.159:8080/api/signup?id='+num+'&email='+hh;
+            ajax.open('GET',url,false);
+            //ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            ajax.send();
+            var back = ajax.responseText;
+            var obj=JSON.parse(back);
+            if(back =='0'){
+                alert("The Reader Has Been Registered");
+            }
+            else{
+                alert("Register Successfully! Your reader id is: "+back);
+            }
+        }
+    }
+   </script>
+
+
+
+
+    <div class="clearfix"></div>
+    </div>
+
+  
+    <!--content-->
+        </div>
+                <div class="fo-top-di">
+
+                    <div class="footer">
+
+                        <p>Copyright &copy; 2020.Mandarin Library Limited Company.</p>
+                    </div>
+                </div>
+            </div>
+                <!--//content-inner-->
+               <!--/sidebar-menu-->
+    <div class="sidebar-menu">
+        <header class="logo1">
+            <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a>
+        </header>
+        <div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
+        <div class="menu">
+            <ul id="menu" >
+                <li><a href="index.html"><i class="fa fa-tachometer"></i> <span>Home</span></a></li>
+                <li id="menu-academico" ><a href="#"><i class="fa fa-table"></i> <span>Book Management</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                    <ul id="menu-academico-sub" >
+                        <li id="menu-academico-avaliacoes" ><a href="AddBook.html">Add Book</a></li>
+                        <li id="menu-academico-avaliacoes" ><a href="DeleteBook.html">Delete Book</a></li>
+                        <li id="menu-academico-avaliacoes" ><a href="EditBook.html">Edit Book</a></li>
+                        <li id="menu-academico-avaliacoes" ><a href="BookCategory.html">Book Category</a></li>
+                        <li id="menu-academico-boletim" ><a href="BookLocation.html">Book Location</a></li>
+                    </ul>
+                </li>
+                <li id="menu-academico" ><a href="#"><i class="lnr lnr-layers"></i> <span>Reader Management</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                    <ul id="menu-academico-sub" >
+                        <li id="menu-academico-avaliacoes" ><a href="RegisterReader.html">Register</a></li>
+                        <li id="menu-academico-avaliacoes" ><a href="ReaderHistory.html">Reader History</a></li>
+                        <li id="menu-academico-avaliacoes" ><a href="Delete&EditReader.html">Delete&Edit</a></li>
+                        <li id="menu-academico-boletim" ><a href="LendBook.html">Lend Book</a></li>
+                        <li id="menu-academico-boletim" ><a href="ReturnBook.html">Return Book</a></li>
+                        <li id="menu-academico-boletim" ><a href="payFine.html">Pay Fine</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="lnr lnr-chart-bars"></i> <span>Library Management</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                    <ul>
+                        <li><a href="IncomeHistory.html?_ijt=fg4qdths8s2g1rda2nis81sooj">Income History</a></li>
+                        <li><a href="PostNews.html">Post News</a></li>
+                        <li><a href="UpdateNews.html">Update News</a></li>
+                        <li><a href="DeleteNews.html">Delete News</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+    <script >
+    
+    
+    </script>
 
 </body>
 </html>
