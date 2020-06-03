@@ -1,4 +1,7 @@
-
+.red{
+    color: #ff050d;
+    margin-top: 8px;
+}
 label.col-sm-2.control-labe20 {
     font-size: 16px;
     margin-top: 10px;
@@ -24,12 +27,6 @@ label.col-sm-2.control-labe20 {
     margin-bottom: 50px;
     display: block;
 }
-.sub-but-1{
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 50px;
-    display: none;
-}
 .tabs {
     position: relative;
     width: 100%;
@@ -45,7 +42,7 @@ label.col-sm-2.control-labe20 {
 }
 .content section {
     font-size: 1.25em;
-    display: none;
+    display: block;
     max-width: 1230px;
     margin: 0 auto 0 2em;
     padding: 20px 0;
@@ -71,6 +68,21 @@ input[type="date"] {
     float: left;
     width: 30%;
 }
+.contentText{
+    border: 1px solid #ccc;
+    padding: 5px 8px;
+    color: #616161;
+    background: #fff;
+    box-shadow: none !important;
+    width: 100%;
+    font-size: 0.85em;
+    font-weight: 300;
+    height: 150px;
+    border-radius: 0;
+    -webkit-appearance: none;
+    resize: none;
+}
+
 input[type="file"] {
     border-width: 0;
     padding-left: 0;
@@ -102,14 +114,4 @@ label.barcode{
 
 #picture{
     display: none;
-}
-.red{
-    color: #ff050d;
-    margin-top: 8px;
-}
-.content section.content-current {
-    display: block;
-}
-.ctl{
-    width: 63%;
 }

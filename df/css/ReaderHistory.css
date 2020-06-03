@@ -1,4 +1,7 @@
-
+.red{
+    color: #ff050d;
+    margin-top: 8px;
+}
 label.col-sm-2.control-labe20 {
     font-size: 16px;
     margin-top: 10px;
@@ -18,17 +21,11 @@ label.col-sm-2.control-labe20 {
     color: #FFFFFF;
 
 }
-.sub-but{
+.del-but{
     text-align: center;
     margin-top: 0;
     margin-bottom: 50px;
     display: block;
-}
-.sub-but-1{
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 50px;
-    display: none;
 }
 .tabs {
     position: relative;
@@ -71,45 +68,44 @@ input[type="date"] {
     float: left;
     width: 30%;
 }
-input[type="file"] {
+select{
+    display: block;
+    float: left;
+    font-size: 14px;
+    font-weight: normal;
+    margin-top: 10.9px;
+    margin-bottom: 10.9px;
+    position: relative;
+    width: 12%;
     border-width: 0;
-    padding-left: 0;
+    margin-right: 15px;
+    padding-left: 25px;
 }
-input[type="file"]{
+.dis{
     display: none;
-}
-#file{
-    width: 79%;
-}
-.but1{
-    width: 20%;
-    font-size: 0.9em;
-    background-color: #83d3e3;
-    padding: 0.4em 0.3em;
-    height: 38px;
-    color: #FFFFFF;
-    cursor: pointer;
-    border: 0;
-}
-
-label.barcode{
-    padding-top: 19px;
-}
-
-.pic{
-    padding-left: 213px;
-}
-
-#picture{
-    display: none;
-}
-.red{
-    color: #ff050d;
-    margin-top: 8px;
 }
 .content section.content-current {
     display: block;
 }
 .ctl{
     width: 63%;
+}
+table{
+    width: 85%;
+    display: table;
+    border: solid;
+    border-width: 1px;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-collapse:collapse;
+    table-layout: fixed;
+}
+td{
+    border-bottom: 1px solid;
+    text-align: center;
+    width: 33.3333%;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }

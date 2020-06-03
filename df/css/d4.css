@@ -1,4 +1,7 @@
-
+.red{
+    color: #ff050d;
+    margin-top: 8px;
+}
 label.col-sm-2.control-labe20 {
     font-size: 16px;
     margin-top: 10px;
@@ -18,17 +21,11 @@ label.col-sm-2.control-labe20 {
     color: #FFFFFF;
 
 }
-.sub-but{
+.del-but{
     text-align: center;
     margin-top: 0;
     margin-bottom: 50px;
     display: block;
-}
-.sub-but-1{
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 50px;
-    display: none;
 }
 .tabs {
     position: relative;
@@ -71,41 +68,9 @@ input[type="date"] {
     float: left;
     width: 30%;
 }
-input[type="file"] {
-    border-width: 0;
-    padding-left: 0;
-}
-input[type="file"]{
+
+.dis{
     display: none;
-}
-#file{
-    width: 79%;
-}
-.but1{
-    width: 20%;
-    font-size: 0.9em;
-    background-color: #83d3e3;
-    padding: 0.4em 0.3em;
-    height: 38px;
-    color: #FFFFFF;
-    cursor: pointer;
-    border: 0;
-}
-
-label.barcode{
-    padding-top: 19px;
-}
-
-.pic{
-    padding-left: 213px;
-}
-
-#picture{
-    display: none;
-}
-.red{
-    color: #ff050d;
-    margin-top: 8px;
 }
 .content section.content-current {
     display: block;
