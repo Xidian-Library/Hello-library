@@ -14,6 +14,7 @@ function sub_book() {
     var picture=document.getElementById("cover").value.trim();
     if(bookname==="" || publishinghouse==="" || date==="" || author==="" || address==="" || type==="" || brief==="" || price==="" || isNaN(price) || picture===""){
         alert("Error input");
+        console.log('Error!');
     }
     else {
         if(isbn===""){
@@ -23,7 +24,29 @@ function sub_book() {
             document.getElementById("isbn").value = isbn;
         }
         var xml=new XMLHttpRequest();
+        /*xml.open("POST", "http://114.55.250.159:8080/book/add_new_book", true);
+        xml.setRequestHeader('content-type', 'application/json');
+        xml.onreadystatechange = function() {
+            if (xml.readyState === 4 && xml.status===200) {
+                if(xml.responseText=="1"){
+                    alert("Add a success");
+                }
+                else {
+                    alert("Add failure "+xml.responseText);
+                }
+            }
+        }
 
+        book.bookname=bookname;
+        book.publisher=publishinghouse;
+        book.author=author;
+        book.date=date;
+        book.type=type;
+        book.isbn=isbn;
+        book.address=address;
+        book.brief=brief;
+        book.price=Number(price);
+        xml.send(JSON.stringify(book));*/
         var url='http://114.55.250.159:8080/book/add_new_book?book_name='+bookname+'&book_author='+author+
             '&book_publisher='+publishinghouse+'&book_date='+date+'&book_id='+isbn+'&book_type='+type+'&book_address='+address+'&book_price='+price+'&book_brief='+brief;
         //console.log(url);
@@ -34,14 +57,6 @@ function sub_book() {
             console.log(xml.status);*/
             if (xml.readyState === 4 && xml.status===200) {
                 if(xml.responseText!="failure"){
-                    if(xml.responseText==='ClassroomNotExist'){
-                        alert('Error! Classroom Not Exist!');
-                        return;
-                    }
-                    if(xml.responseText==='TypeNotExist'){
-                        alert('Error! Type Not Exist!');
-                        return;
-                    }
                     console.log(xml.responseText+'0');
                     sub_picture(isbn,xml.responseText);
                 }
@@ -94,20 +109,11 @@ function turn_rad() {
     document.getElementById("brief").value="";
     document.getElementById("price").value="";
     var red=document.getElementsByClassName("red");
-    for(var i=0;i<10;i++){
+    for(var i=0;i<red.length;i++){
         red[i].style.color="#ff050d";
         red[i].innerHTML="*";
     }
     document.getElementById("picture").style.display="none";
-}
-function turn_rad_1() {
-    document.getElementById("isbn_dup").value="";
-    document.getElementById("number").value="";
-    var red=document.getElementsByClassName("red");
-    for(var i=10;i<red.length;i++){
-        red[i].style.color="#ff050d";
-        red[i].innerHTML="*";
-    }
 }
 function judge_blank(button) {
     if(button.value.trim()===""){
@@ -120,48 +126,8 @@ function judge_blank(button) {
                 document.getElementById(button.id+"_p").style.color="#ff050d";
                 return;
             }
-            if(!/^\+?[1-9][0-9]*$/.test(button.value) && button.id==="number"){
-                document.getElementById(button.id+"_p").innerHTML="Must be int";
-                document.getElementById(button.id+"_p").style.color="#ff050d";
-                return;
-            }
             document.getElementById(button.id+"_p").innerHTML="√";
             document.getElementById(button.id+"_p").style.color="#0CFF2E";
 
-    }
-}
-function turn() {
-    document.getElementById("sub-but").style.display="none";
-    document.getElementById("sub-but-1").style.display="block";
-}
-function back() {
-    document.getElementById("sub-but").style.display="block";
-    document.getElementById("sub-but-1").style.display="none";
-}
-function sub_book_1() {
-    var number=document.getElementById("number").value.trim();
-    var isbn=document.getElementById("isbn_dup").value.trim();
-    if(number === "" || isbn ==="" || !/^\+?[1-9][0-9]*$/.test(number)){
-        alert("Error input");
-    }
-    else {
-        var xml=new XMLHttpRequest();
-        var url='http://114.55.250.159:8080/book/add_new_books?book_id='+isbn+'&amount='+number;
-        //console.log(url);
-        xml.open('GET',url);
-        xml.send();
-        xml.onreadystatechange = function() {
-            /*console.log(xml.readyState);
-            console.log(xml.status);*/
-            if (xml.readyState === 4 && xml.status===200) {
-                if(xml.responseText=="Add success!"){
-                    console.log(xml.responseText);
-                    alert("Add success")
-                }
-                else {
-                    alert("Add failure "+xml.responseText);
-                }
-            }
-        }
     }
 }

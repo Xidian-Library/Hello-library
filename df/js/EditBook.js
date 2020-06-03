@@ -44,14 +44,15 @@ function search() {
                     return;
                 }
                 //console.log(jsonObj[0].address);
-
                 //显示搜索到的书籍信息
 
                 var html='';
                 for (var i=0;i<jsonObj.length;i++){
+                    var imageUrl='http://114.55.250.159:8080/bookpic/bookpic'+jsonObj[i].bookid+'.png';
+
                     html += '<li id="'+i+'">';
                     html += '<div class="left">';
-                    html += '<img src="images/11.jpg" alt="" width="100px" height="150px">';
+                    html += '<img src='+imageUrl+' alt="" width="100px" height="150px">';
                     html += '</div>';
                     html += '<div class="right">';
                     html += '<div class="toptitle">' + jsonObj[i].name + '<a class="editButton" onclick="choose(this)">Edit</a></div>';
@@ -118,8 +119,11 @@ function edit() {
     ajax.onreadystatechange=function (){
         if (ajax.readyState===4 && ajax.status===200){
             console.log("Edit Successfully!");
+            alert("Edit Successfully!");
+
         }else if(ajax.readyState===4 && ajax.status!==200){
             console.log("Edit Failed!");
+            alert("Edit Failed!");
         }
     }
 }

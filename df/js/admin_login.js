@@ -1,17 +1,9 @@
 
 
-function login() {
+function admin_login() {
     var username = document.getElementById("username").value;
     var pass = document.getElementById("password").value;
-    var radio1= document.getElementById("lib");
-    var radio2= document.getElementById("reader");
-    var usertype="";
-    if(radio1.checked){
-        usertype = radio1.value;
-    }
-    if(radio2.checked){
-        usertype=radio2.value;
-    }
+    
     //var usertype= "Reader";
     var testString='test';
     console.log('login');
@@ -21,15 +13,12 @@ function login() {
     else if (pass  === "") {
         alert("请输入密码");
     }
-    else if(usertype === ""){
-        alert("请选择用户类型");
-    }
     else {
         var ajax = new XMLHttpRequest();
-        var url='http://114.55.250.159:8080/api/login?id='+username+'&password='+pass+'&type='+usertype;
-        var adminUrl='http://114.55.250.159:8080/api/AdminLogin?id=101&password=66';
+        var adminurl='http://114.55.250.159:8080/api/AdminLogin?id=' + username + '&password='+ pass;
+        //var adminUrl='http://114.55.250.159:8080/api/AdminLogin?id=101&password=66';
         //var url='http://114.55.250.159:8080/api/test?id=2&password=2';
-        ajax.open('GET',url);
+        ajax.open('GET', adminurl);
         ajax.send();
         ajax.onreadystatechange = function () {
             if (ajax.readyState===4&&ajax.status===200) {
@@ -37,20 +26,11 @@ function login() {
                 console.log("connect successfully");
                 console.log(typeof ajax.responseText);
                 if(ajax.responseText==='1') {
-                    if(usertype==="Librarian")
-                    {
-                        console.log('1');
-                        sessionStorage.setItem('usrname',username);
-                        console.log('sessionstorage='+sessionStorage.getItem('usrname'));
-                        window.location.replace('PersonalPage.html');
-                    }
-                    if(usertype==="Reader")
-                    {
-                        console.log('1');
-                        sessionStorage.setItem('usrname',username);
-                        console.log('sessionstorage='+sessionStorage.getItem('usrname'));
-                        window.location.replace('readerindex.html');
-                    }
+					console.log('1');
+                    sessionStorage.setItem('usrname',username);
+                    console.log('sessionstorage='+sessionStorage.getItem('usrname'));
+                    window.location.replace('indexnew.html');
+                    
                 }
                 else if(ajax.responseText==='0'){
                     console.log('0');
@@ -76,19 +56,6 @@ function login() {
     }
 }
 function RePass() {
-    var radio1= document.getElementById("lib");
-    var radio2= document.getElementById("reader");
-    var usertype="";
-    if(radio1.checked){
-        usertype = radio1.value;
-    }
-    if(radio2.checked){
-        usertype=radio2.value;
-    }
-    if(usertype==="Librarian")
-    {
-        alert('Please ask help from Admin!');
-    }
     var username = document.getElementById("username").value;
     if (username === "") {
         alert("请输入用户名");

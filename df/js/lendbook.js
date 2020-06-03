@@ -20,6 +20,7 @@ function lend() {
             }else if(ajax.responseText==="Fail"){
                 alert("Fail!");
             }else if(ajax.responseText==="Borrowed"){
+                console.log(ajax.responseText);
                 alert("The book has been borrowed!");
             }
             else{

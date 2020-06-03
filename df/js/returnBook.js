@@ -4,7 +4,7 @@ var readerid=document.getElementById("readerid");
 var codeNum=barcode.value;
 function returnBook(){
     console.log("return!");
-    var url="http://114.55.250.159:8080/api/librarian_return_book?borrowerid="+barcode.value+"&barcode="+readerid.value;
+    var url="http://114.55.250.159:8080/api/librarian_return_book?borrowerid="+readerid.value+"&barcode="+barcode.value;
     //var url="http://114.55.250.159:8080/api/librarian_return_book?borrowerid=1&barcode=1";
     var ajax=new XMLHttpRequest();
     ajax.open("GET",url);
@@ -25,7 +25,7 @@ function returnBook(){
                     graph.style.display="none";
                     var fine=document.getElementById("fine");
                     fine.style.display="block";
-                    var fineNum=document.getElementById("fineNum")
+                    var fineNum=document.getElementById("fineNum");
                     fineNum.innerHTML=ajax.responseText;
                 }
             }
@@ -51,6 +51,7 @@ function judge_blank(button) {
 
     }
 }
+
 function pay() {
     console.log("pay!");
     var url="http://114.55.250.159:8080/api/return_ispay?barcode="+codeNum+"&ispay=1";
@@ -64,7 +65,17 @@ function pay() {
         }
     }
 }
+
 function cancel() {
     console.log("cancel");
-    alert("What a pity! Please pay the fine next time!")
+    var url="http://114.55.250.159:8080/api/return_ispay?barcode="+codeNum+"&ispay=-1";
+    var ajax=new XMLHttpRequest();
+    ajax.open("GET",url);
+    ajax.send();
+    ajax.onreadystatechange=function (){
+        if (ajax.readyState===4&&ajax.status===200){
+            alert("What a pity! Please pay the fine next time!");
+        }
+    }
+    //alert("What a pity! Please pay the fine next time!");
 }

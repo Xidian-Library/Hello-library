@@ -18,7 +18,8 @@ function judge_blank(button) {
 function del_book() {
     console.log(document.getElementById("delete-id").value);
     var id=document.getElementById("id").value.trim();
-    var admin_id="123456";
+    var admin_id=sessionStorage.getItem('usrname');
+    console.log('admin id='+admin_id);
     if(id===""){
         alert("ID can't be empty");
     }
@@ -53,7 +54,36 @@ function del_book() {
 }
 function turn() {
     document.getElementById("del").style.display="none";
+    document.getElementById("section-1").style.display="none";
+    document.getElementById("section-2").style.display="block";
+    var ajax = new XMLHttpRequest();
+    var url='http://114.55.250.159:8080/api/get_deleted_book';
+    ajax.open('GET',url);
+    ajax.send();
+    ajax.onreadystatechange=function () {
+        if(ajax.readyState===4&&ajax.status===200){
+            console.log('Delete Log!');
+            console.log(ajax.responseText);
+            jsonObj=JSON.parse(ajax.responseText);
+            var html='<table class="deleteLog"><tr><td>Book ID</td><td>Date</td><td>Bar code</td><td>Librarian</td></tr>';
+            for(var i=0;i<jsonObj.length;i++){
+                html+='<tr>';
+                html+='<td>'+jsonObj[i].book_id+'</td>';
+                html+='<td>'+jsonObj[i].date+'</td>';
+                html+='<td>'+jsonObj[i].book_barcode+'</td>';
+                html+='<td>'+jsonObj[i].admin_id+'</td>';
+                html+='</tr>';
+            }
+            html+='</table>';
+            document.getElementById("section-2").innerHTML=html;
+        }
+        else if(ajax.readyState===4){
+            console.log('Error Message!');
+        }
+    }
 }
 function back() {
     document.getElementById("del").style.display="block";
+    document.getElementById("section-1").style.display="block";
+    document.getElementById("section-2").style.display="none";
 }
